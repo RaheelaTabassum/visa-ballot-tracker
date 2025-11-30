@@ -59,3 +59,54 @@
     margin-right:6px;
     color:#fff;
 }
+.visa-section{
+    text-align: center;
+    padding:50px 20px
+}
+
+.visa-heading{
+    font-size:2rem;
+    font-weight: bold;
+    margin-bottom:40px;
+}
+
+.visa-subtitle{
+    color:#666;
+    margin-bottom: 40px;
+}
+
+.visa-cards{
+    display: flex;
+    justify-content:center;
+    align-items: stretch;
+    gap:30px;
+    flex-wrap:nowrap;
+    padding: 20px;
+}
+.visa-card {
+  width: 350px;
+  padding: 20px;
+}
+
+.visa-card.opened{
+    border-top:5px solid #22c55e;
+
+}
+
+.visa-card.closed{
+    border-top: 5px solid #ef4444;
+}
+
+.visa-btn{
+    display: inline-block;
+    margin-top: 15px;
+    background: #007bff;
+    color:white;
+    padding:10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.visa-btn:hover{
+    background-color: #0056b3;
+}
