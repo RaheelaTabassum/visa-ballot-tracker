@@ -45,7 +45,7 @@ export default function VisaLotteries(){
           <div className="visa-card closed">
             <Card>
             <h3> 🇺🇸 United States</h3>
-            <p className="status"> Status: <span> Cloased </span></p>
+            <p className="status"> Status: <span> Closed </span></p>
             <h4> DV Lottery (Diversity Visa)</h4>
             <p>
                 The Diversity Immigrant Visa program makes up to 50,000 immigrant
@@ -67,7 +67,7 @@ export default function VisaLotteries(){
           <div className="visa-card closed">
             <Card>
                 <h3>Australia</h3>
-                <p className="status">Status: <span>Open</span></p>
+                <p className="status">Status: <span>closed</span></p>
                 <h4>Work and Holiday (Subclass 462) — Visa Ballot</h4>
                 <p>
                     Australia runs a pre-application ballot system for cdertain countries (like India,china,and vietnam) under the <b> Work and Holiday (subclass 462)</b>
@@ -87,7 +87,7 @@ export default function VisaLotteries(){
             </Card>
           </div>
 
-            <div className="visa-card open">
+            <div className="visa-card opened">
             <Card>
             <h3> 🇳🇿 New Zealand</h3>
             <p className="status">Status: <span>Open</span></p>
