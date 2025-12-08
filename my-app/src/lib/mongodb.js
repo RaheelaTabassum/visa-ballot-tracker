@@ -1,11 +1,19 @@
-import mongoose from "mongoose";
+// src/lib/mongodb.js
+import { MongoClient } from "mongodb";
 
-const MONGODB_URI = process.env.MONGODB_URI;
-
-if (!MONGODB_URI) {
-    throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
+const uri = process.env.MONGODB_URI || "";
+if (!uri) {
+  // Do NOT throw — just log and create a placeholder that will fail gracefully later
+  console.warn("MONGODB_URI is not set");
 }
 
-let cached =global.mongoose;
+let client;
+let clientPromise;
 
-if(!cached){}
+if (!global._mongoClientPromise) {
+  client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  global._mongoClientPromise = client.connect();
+}
+clientPromise = global._mongoClientPromise;
+
+export default clientPromise;
