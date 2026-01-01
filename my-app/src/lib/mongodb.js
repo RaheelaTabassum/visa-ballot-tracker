@@ -1,19 +1,24 @@
-// src/lib/mongodb.js
-import { MongoClient } from "mongodb";
+import mongoose from "mongoose";
 
-const uri = process.env.MONGODB_URI || "";
-if (!uri) {
-  // Do NOT throw — just log and create a placeholder that will fail gracefully later
-  console.warn("MONGODB_URI is not set");
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  throw new Error("Please define the MONGODB_URI environment variable");
 }
 
-let client;
-let clientPromise;
+let cached = global.mongoose;
 
-if (!global._mongoClientPromise) {
-  client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-  global._mongoClientPromise = client.connect();
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
 }
-clientPromise = global._mongoClientPromise;
 
-export default clientPromise;
+export async function connectDB() {
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI);
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
